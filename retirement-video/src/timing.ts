@@ -29,7 +29,9 @@ export const buildScenes = (): Scene[] => {
   let photoIndex = 0;
 
   for (const ch of config.chapters) {
-    scenes.push({ kind: "chapter", frames: sec(t.chapterCard), number: ch.number, title: ch.title, titleEn: ch.titleEn });
+    if (config.showChapterCards) {
+      scenes.push({ kind: "chapter", frames: sec(t.chapterCard), number: ch.number, title: ch.title, titleEn: ch.titleEn });
+    }
     if (ch.showTimeline && config.milestones.length > 0) {
       scenes.push({ kind: "timeline", frames: timelineFrames(config.milestones.length), milestones: config.milestones });
     }
@@ -54,11 +56,31 @@ export const buildScenes = (): Scene[] => {
 
   if (config.wishes.length > 0) {
     const n = config.chapters.length + 1;
-    scenes.push({ kind: "chapter", frames: sec(t.chapterCard), number: n, title: config.wishesChapter.title, titleEn: config.wishesChapter.titleEn });
+    if (config.showChapterCards) scenes.push({ kind: "chapter", frames: sec(t.chapterCard), number: n, title: config.wishesChapter.title, titleEn: config.wishesChapter.titleEn });
     config.wishes.forEach((wish, index) => scenes.push({ kind: "wish", frames: wishFrames(wish), wish, index }));
   }
   scenes.push({ kind: "closing", frames: sec(t.closing) });
-  return scenes;
+  return fitToTarget(scenes);
+};
+
+/**
+ * When timing.targetSeconds is set, stretch or shrink the photo scenes (single + collage) by one
+ * common factor so the whole video lands on the target length. Other scenes keep their length.
+ */
+const fitToTarget = (scenes: Scene[]): Scene[] => {
+  const target = config.timing.targetSeconds;
+  if (!target) return scenes;
+  const isPhoto = (s: Scene) => s.kind === "photo" || s.kind === "collage";
+  const photo = scenes.filter(isPhoto).reduce((a, s) => a + s.frames, 0);
+  if (photo === 0) return scenes;
+  const rest = totalFrames(scenes) - photo;
+  const k = Math.max(0.4, (sec(target) - rest) / photo);
+  const out = scenes.map((s) => (isPhoto(s) ? { ...s, frames: Math.max(TRANSITION_FRAMES + 30, Math.round(s.frames * k)) } : s));
+  // absorb the rounding error in the closing scene so the total is exact
+  const diff = sec(target) - totalFrames(out);
+  const last = out[out.length - 1];
+  out[out.length - 1] = { ...last, frames: last.frames + diff };
+  return out;
 };
 
 export const totalFrames = (scenes: Scene[]) =>

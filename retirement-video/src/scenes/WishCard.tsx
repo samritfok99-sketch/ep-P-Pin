@@ -34,6 +34,8 @@ export const WishCard: React.FC<WishCardProps> = ({ wish, index, transparent = f
     >
       <div style={{ fontFamily: fonts.english, fontStyle: "italic", fontSize: 110, color: colors.gold, lineHeight: 0.6, height: 50 }}>“</div>
       <div style={{ ...enter(frame, 10, 16), fontFamily: fonts.thaiBody, fontSize: msgSize, lineHeight: 1.55, marginTop: 10 }}>{wish.message}</div>
+      {wish.name || wish.department || wish.photo ? (
+        <>
       <div style={{ marginTop: 30 }}>
         <Divider width={260} delay={24} />
       </div>
@@ -45,10 +47,12 @@ export const WishCard: React.FC<WishCardProps> = ({ wish, index, transparent = f
           />
         ) : null}
         <div style={{ textAlign: wish.photo ? "left" : "center" }}>
-          <div style={{ fontFamily: fonts.thaiHeading, fontWeight: 600, fontSize: 40 }}>{wish.name}</div>
-          <div style={{ fontFamily: fonts.thaiBody, fontSize: 30, color: colors.inkSoft }}>{wish.department}</div>
+          {wish.name ? <div style={{ fontFamily: fonts.thaiHeading, fontWeight: 600, fontSize: 40 }}>{wish.name}</div> : null}
+          {wish.department ? <div style={{ fontFamily: fonts.thaiBody, fontSize: 30, color: colors.inkSoft }}>{wish.department}</div> : null}
         </div>
       </div>
+        </>
+      ) : null}
     </div>
   );
   return (

@@ -27,7 +27,7 @@ export const PhotoCollage: React.FC<PhotoCollageProps> = ({ photos, index }) => 
       <GoldFrame />
       {photos.slice(0, n).map((photo, i) => {
         const [cx, cy, tilt] = layout[i];
-        const p = rise(frame, 6 + i * 18);
+        const p = rise(frame, 3 + i * 9);
         const portrait = photo.orientation === "portrait";
         const width = n >= 3 ? (portrait ? 330 : 520) : portrait ? 420 : 640;
         const flip = (index + i) % 2 === 0 ? -1 : 1;
