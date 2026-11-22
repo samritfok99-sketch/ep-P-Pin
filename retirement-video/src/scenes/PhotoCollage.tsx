@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Backdrop } from "../components/Backdrop";
 import { GoldFrame } from "../components/GoldFrame";
+import { LoveEffects } from "../components/LoveEffects";
 import { Polaroid } from "../components/Polaroid";
 import { rise } from "../components/motion";
 import type { Photo } from "../config";
@@ -25,6 +26,7 @@ export const PhotoCollage: React.FC<PhotoCollageProps> = ({ photos, index }) => 
     <AbsoluteFill>
       <Backdrop />
       <GoldFrame />
+      <LoveEffects count={3} area="edges" seed={`collage-${index}`} />
       {photos.slice(0, n).map((photo, i) => {
         const [cx, cy, tilt] = layout[i];
         const p = rise(frame, 3 + i * 9);

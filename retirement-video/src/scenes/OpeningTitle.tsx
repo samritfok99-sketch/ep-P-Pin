@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Backdrop } from "../components/Backdrop";
 import { GoldFrame } from "../components/GoldFrame";
+import { LoveEffects } from "../components/LoveEffects";
 import { Divider } from "../components/Ornament";
 import { Polaroid } from "../components/Polaroid";
 import { enter } from "../components/motion";
@@ -17,6 +18,7 @@ export const OpeningTitle: React.FC = () => {
     <AbsoluteFill>
       <Backdrop />
       <GoldFrame />
+      <LoveEffects count={12} area="edges" seed="opening" />
       <AbsoluteFill
         style={{
           flexDirection: "row",
@@ -41,11 +43,11 @@ export const OpeningTitle: React.FC = () => {
           <div style={{ ...enter(frame, 30), fontFamily: fonts.thaiHeading, fontWeight: 700, fontSize: 92, marginTop: 30, lineHeight: 1.25 }}>
             {p.nickname}
           </div>
-          <div style={{ ...enter(frame, 40), fontFamily: fonts.thaiBody, fontSize: 38, color: colors.inkSoft, marginTop: 6 }}>
+          <div style={{ ...enter(frame, 40), fontFamily: fonts.thaiBody, fontWeight: 600, fontSize: 42, color: colors.inkSoft, marginTop: 6 }}>
             {p.fullName}
           </div>
-          <div style={{ ...enter(frame, 62), fontFamily: fonts.thaiHeading, fontSize: 46, marginTop: 44, lineHeight: 1.4 }}>
-            ขอบคุณสำหรับ {p.yearsOfService} ปีแห่งความทุ่มเท
+          <div style={{ ...enter(frame, 62), fontFamily: fonts.thaiHeading, fontWeight: 700, fontSize: 52, marginTop: 44, lineHeight: 1.4 }}>
+            {p.tagline}
           </div>
           <div
             style={{

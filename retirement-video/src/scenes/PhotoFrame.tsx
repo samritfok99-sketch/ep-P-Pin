@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Backdrop } from "../components/Backdrop";
 import { GoldFrame } from "../components/GoldFrame";
+import { LoveEffects } from "../components/LoveEffects";
 import { Polaroid } from "../components/Polaroid";
 import { rise } from "../components/motion";
 import type { Photo } from "../config";
@@ -19,6 +20,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({ photo, index }) => {
     <AbsoluteFill>
       <Backdrop />
       <GoldFrame />
+      <LoveEffects count={4} area="edges" seed={`photo-${index}`} />
       <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
         <div
           style={{

@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, Img, OffthreadVideo, staticFile, useCurrentFrame } from "remotion";
 import { Backdrop } from "../components/Backdrop";
 import { GoldFrame } from "../components/GoldFrame";
+import { LoveEffects } from "../components/LoveEffects";
 import { Divider } from "../components/Ornament";
 import { enter, rise } from "../components/motion";
 import type { Wish } from "../config";
@@ -14,7 +15,7 @@ export const WishCard: React.FC<WishCardProps> = ({ wish, index, transparent = f
   const frame = useCurrentFrame();
   const hasVideo = Boolean(wish.video);
   const p = rise(frame, 0);
-  const cardW = hasVideo ? 760 : 1160;
+  const cardW = hasVideo ? 760 : 1420;
   const msgSize = wish.message.length > 90 ? 40 : wish.message.length > 50 ? 46 : 52;
   const card = (
     <div
@@ -32,8 +33,11 @@ export const WishCard: React.FC<WishCardProps> = ({ wish, index, transparent = f
         transform: `translateY(${(1 - p) * 30}px) rotate(${(index % 2 === 0 ? -1 : 1) * 0.6}deg)`,
       }}
     >
-      <div style={{ fontFamily: fonts.english, fontStyle: "italic", fontSize: 110, color: colors.gold, lineHeight: 0.6, height: 50 }}>“</div>
-      <div style={{ ...enter(frame, 10, 16), fontFamily: fonts.thaiBody, fontSize: msgSize, lineHeight: 1.55, marginTop: 10 }}>{wish.message}</div>
+      <div style={{ ...enter(frame, 6, 16), fontFamily: fonts.thaiBody, fontWeight: 600, fontSize: msgSize, lineHeight: 1.55 }}>
+        <span style={{ color: colors.gold }}>“</span>
+        {wish.message}
+        <span style={{ color: colors.gold }}>”</span>
+      </div>
       {wish.name || wish.department || wish.photo ? (
         <>
       <div style={{ marginTop: 30 }}>
@@ -63,6 +67,7 @@ export const WishCard: React.FC<WishCardProps> = ({ wish, index, transparent = f
           <GoldFrame />
         </>
       )}
+      <LoveEffects count={9} area="edges" seed={`wish-${index}`} />
       <AbsoluteFill style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 70 }}>
         {hasVideo ? (
           <div
