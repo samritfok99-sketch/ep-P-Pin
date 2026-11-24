@@ -93,6 +93,8 @@ export const config = {
   { src: "photos/photo-53.jpg", chapter: 1, style: "collage", year: "", caption: "", orientation: "portrait" },
   // ---- เรื่องที่ 2: งานและกิจกรรมกับทีม  (รูปแรกของแต่ละเรื่องแสดงเดี่ยว ที่เหลือเป็นคอลลาจ)
   { src: "photos/photo-27.jpg", chapter: 2, style: "single", year: "", caption: "", orientation: "landscape" },
+  { src: "photos/photo-76.jpg", chapter: 2, style: "collage", year: "2017", caption: "", orientation: "portrait" },
+  { src: "photos/photo-77.jpg", chapter: 2, style: "collage", year: "2017", caption: "", orientation: "landscape" },
   { src: "photos/photo-36.jpg", chapter: 2, style: "collage", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-42.jpg", chapter: 2, style: "collage", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-28.jpg", chapter: 2, style: "collage", year: "", caption: "", orientation: "landscape" },
@@ -110,6 +112,8 @@ export const config = {
   { src: "photos/photo-33.jpg", chapter: 3, style: "single", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-34.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-29.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "landscape" },
+  { src: "photos/photo-80.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "landscape" },
+  { src: "photos/photo-79.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "portrait" },
   { src: "photos/photo-54.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "portrait" },
   { src: "photos/photo-55.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "portrait" },
   { src: "photos/photo-45.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "landscape" },
@@ -118,6 +122,7 @@ export const config = {
   { src: "photos/photo-48.jpg", chapter: 3, style: "collage", year: "", caption: "", orientation: "landscape" },
   // ---- เรื่องที่ 4: วันพิเศษของคนในทีม  (รูปแรกของแต่ละเรื่องแสดงเดี่ยว ที่เหลือเป็นคอลลาจ)
   { src: "photos/photo-50.jpg", chapter: 4, style: "single", year: "", caption: "", orientation: "landscape" },
+  { src: "photos/photo-78.jpg", chapter: 4, style: "collage", year: "", caption: "", orientation: "portrait" },
   { src: "photos/photo-52.jpg", chapter: 4, style: "collage", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-51.jpg", chapter: 4, style: "collage", year: "", caption: "", orientation: "landscape" },
   { src: "photos/photo-56.jpg", chapter: 4, style: "collage", year: "", caption: "", orientation: "portrait" },
