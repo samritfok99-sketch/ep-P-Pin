@@ -54,7 +54,8 @@ export const RetirementFull: React.FC = () => {
       {m.src ? (
         <Audio
           src={staticFile(m.src)}
-          loop
+          loop={m.loop}
+          trimBefore={Math.round(m.startAtSeconds * FPS)}
           volume={(f) =>
             interpolate(f, [0, fadeIn, durationInFrames - fadeOut, durationInFrames], [0, m.volume, m.volume, 0], {
               extrapolateLeft: "clamp",
